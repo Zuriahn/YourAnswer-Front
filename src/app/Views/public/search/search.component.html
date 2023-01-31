@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 container">
+            <h5 class="display-4">Buscador</h5>
+            <div class="row">
+                <form class="d-flex" action="GET" (ngSubmit)="GetSearchQuestions()" [formGroup]="SearchForm">
+                    <div class="col-6">
+                        <div class="m-1">
+                            <label class="form-label">Titulo de la pregunta</label>
+                            <input class="form-control" type="text" name="title" id="title" required formControlName="title">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="m-1">
+                            <label class="form-label d-block">Categoria</label>
+                            <div class="d-flex">
+                                <select class="form-select" aria-label="Default select example" (change)="selectCategory($event)">
+                                    <option *ngFor="let category of AllCategories" [value]="category.id">{{category.name}}</option>
+                                </select>
+                                <button type="submit" [disabled]="SearchForm.invalid" class="btn-search btn btn-primary">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex align-items-center justify-content-center" *ngIf="IsSearching; else content">
+            <div class="spinner-border m-5" role="status"></div>
+        </div>
+        <ng-template #content>
+            <div class="col-4 p-0" *ngFor="let question of SearchQuestions">
+                <div class="row question-container m-4">
+                    <div class="col-3 p-0">
+                        <img src="{{question.image}}" class="rounded img-fluid image-card" alt="Responsive image">
+                    </div>
+                    <div class="col-9 container-fluid">
+                        <h5 class="question-title"> <a class="text-decoration-none" routerLink="/question/{{question.id}}">{{question.title}}</a> </h5>
+                        <p>{{question.description}}</p>
+                        <div class="d-flex justify-content-around">
+                            <h6> <a class="text-decoration-none" routerLink="/user/{{question.userid}}"> {{question.user.username}} </a> </h6>
+                            <small> {{question.date | date}} </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
+<app-footer></app-footer>

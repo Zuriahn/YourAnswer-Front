@@ -1,0 +1,9 @@
+.login-container{
+    min-height: 100vh;
+    background-color: rgba(193, 169, 252, 0.1);
+}
+
+.login-form-border{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.5rem;
+}

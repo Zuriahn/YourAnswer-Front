@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div *ngIf="QuestionForm.value.image">
+                <img class="mt-2 mb-2 rounded img-fluid question-image" src="{{QuestionForm.value.image}}" alt="">
+            </div>
+            <form class="mt-4 container" action="POST" (ngSubmit)="SaveQuestion()" [formGroup]="QuestionForm">
+                <div class="mb-4">
+                    <label class="form-label">Titulo de la pregunta</label>
+                    <input class="form-control" type="text" name="title" id="title" required formControlName="title">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Descripción de la pregunta</label>
+                    <input class="form-control" type="text" name="description" id="description" required formControlName="description">
+                </div>
+                <select class="form-select mb-4" aria-label="Default select example" required (change)="selectCategory($event)">
+                    <option *ngFor="let category of AllCategories" [value]="category.id">{{category.name}}</option>
+                </select>
+                <div class="mb-4">
+                    <label class="form-label">Imagen de referencia</label>
+                    <input class="form-control" type="file" name="image" id="image" (change)="handleFileSelect($event)" required>
+                </div>
+                <div class="text-center mb-4">
+                    <button type="submit" [disabled]="QuestionForm.invalid || IsAdd" class="btn btn-primary">
+                        <span [hidden]="!IsAdd" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Crear pregunta
+                    </button>
+                </div>
+                <div class="mb-2 text-center text-danger">
+                    <span>{{ErrorMessage}}</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

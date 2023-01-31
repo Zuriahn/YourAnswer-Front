@@ -1,0 +1,7 @@
+.section-profile{
+    color: white;
+}
+.section-profile:hover{
+    color: violet;
+    text-decoration: underline;
+}

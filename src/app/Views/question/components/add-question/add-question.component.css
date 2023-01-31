@@ -1,0 +1,7 @@
+.question-image{
+    display: block;
+    margin: 0rem auto;
+    width: 65vw;
+    height: 250px;
+    object-fit: fill;
+}

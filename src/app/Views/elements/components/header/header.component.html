@@ -1,0 +1,25 @@
+<div class="container-fluid header">
+    <header class="row w-100">
+        <div class="col-3 d-flex align-items-center">
+            <form class="" action="POST" (ngSubmit)="SearchQuestion()" [formGroup]="SearchHeaderForm">
+                <input class="rounded" type="text" name="title" id="title"  formControlName="title">
+                <button class="rounded" type="submit"> <i class="bi bi-search"></i> </button>
+            </form>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-center">
+            <h1> <a class="text-white text-decoration-none" routerLink="/home"> YOUR ANSWER </a> </h1>
+        </div>
+        <div class="col-3 d-flex align-items-center justify-content-end">
+            <div class="dropdown">
+                <button class="btn text-white dropdown-toggle" type="button" id="dropdownHeader" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{SessionHeader.username}} <i class="bi bi-person-circle"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownHeader">
+                  <a class="dropdown-item" routerLink="/user/{{SessionHeader.id}}">Mi perfil</a>
+                  <a class="dropdown-item" routerLink="/question/new">Crear pregunta</a>
+                  <a class="dropdown-item" (click)="SignOut()" routerLink="/auth">Salir</a>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

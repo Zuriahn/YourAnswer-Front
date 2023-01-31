@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row register-container">
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+            <div class="register-form-border">
+                <form class="m-3" action="POST" (ngSubmit)="SignUpUser()" [formGroup]="SignUpForm">
+                    <h2 class="mb-4 text-center">YOUR ANSWER</h2>
+                    <div class="mt-2 d-flex align-items-center justify-content-center">
+                        <img type="file" class="rounded mx-auto d-block" src="{{SignUpForm.value.image}}" width="100px" height="100px" alt="">
+                    </div>
+                    <h4 class="mt-2 mb-4 text-center">¡Pregunta y responde al mundo!</h4>
+                    <div class="mb-1">
+                        <label class="form-label">Nombre de usuario</label>
+                        <input class="form-control" type="text" name="username" id="username" required formControlName="username">
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Nombre completo</label>
+                        <input class="form-control" type="text" name="name" id="name" required formControlName="name">
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Image</label>
+                        <input class="form-control" type="file" name="Image" id="Image" (change)="handleFileSelect($event)" required>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Correo electronico</label>
+                        <input class="form-control" type="email" name="email" id="email" required formControlName="email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input class="form-control" type="password" name="password" id="password" required formControlName="password">
+                    </div>
+                    <div class="mb-2 text-center">
+                        <button class="btn btn-primary" [disabled]="SignUpForm.invalid || IsRegister" type="submit">
+                            <span [hidden]="!IsRegister" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Registrarse
+                        </button>
+                    </div>
+                    <div class="mb-2 text-center text-danger">
+                        <span>{{ErrorMessage}}</span>
+                    </div>
+                    <div class="mb-4 text-center">
+                        <h5>¿Ya tienes una cuenta?, inicia sesión <a class="nav-link text-primary d-inline" routerLink="/auth"> aqui </a> </h5>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+            <img class="rounded mx-auto d-block h-75 w-auto" src="https://source.unsplash.com/random/300x300" alt="Responsive image">
+        </div>
+    </div>
+</div>

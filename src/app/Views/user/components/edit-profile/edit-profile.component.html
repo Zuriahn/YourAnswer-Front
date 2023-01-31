@@ -1,0 +1,36 @@
+<div class="container-fluid edit-user">
+    <div class="row">
+        <div class="col-12">
+            <div class="container-fluid">
+                <div class="row bg-dark">
+                    <div class="d-flex mt-4 mb-4 align-items-center justify-content-center" *ngIf="UserUpdForm.value.image">
+                        <img class="mt-4 mb-4 rounded-circle img-fluid user-image" src="{{UserUpdForm.value.Image}}" alt="">
+                    </div>
+                </div>
+            </div>
+            <form class="mt-4 container" action="PUT" (ngSubmit)="SaveEdit()" [formGroup]="UserUpdForm">
+                <div class="mb-4">
+                    <label class="form-label">Nombre completo</label>
+                    <input class="form-control" type="text" name="name" id="name" formControlName="name">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Contraseña nueva</label>
+                    <input class="form-control" type="password" name="password" id="password" formControlName="password">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Imagen de perfil</label>
+                    <input class="form-control" type="file" name="image" id="image" (change)="handleFileSelect($event)">
+                </div>
+                <div class="text-center mb-4">
+                    <button type="submit" [disabled]="UserUpdForm.invalid || IsUpdate" class="btn btn-primary">
+                        <span [hidden]="!IsUpdate" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Actualizar perfil
+                    </button>
+                </div>
+                <div class="mb-2 text-center text-danger">
+                    <span>{{ErrorMessage}}</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
