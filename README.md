@@ -1,5 +1,7 @@
 # YourAnswer
 
+YourAnswer is a website where anyone can post questions and get answers. This is a small project that I created to learn about Angular and Bootstrap.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
 
 ## Development server
